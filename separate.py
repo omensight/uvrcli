@@ -9,6 +9,7 @@ from uvr5_pack.lib_v5 import spec_utils
 from uvr5_pack.utils import _get_name_params,inference
 from uvr5_pack.lib_v5.model_param_init import ModelParameters
 from scipy.io import wavfile
+import sys
 
 class  _audio_pre_():
     def __init__(self, model_path,device,is_half):
@@ -99,10 +100,11 @@ class  _audio_pre_():
             wavfile.write(os.path.join(vocal_root , 'vocal_{}.wav'.format(name) ), self.mp.param['sr'], (np.array(wav_vocals)*32768).astype("int16"))
 
 if __name__ == '__main__':
-    device = 'cuda'
+    args = sys.argv
+    audio_path = args[0]
+    save_path = args[1]
+    device = 'cpu'
     is_half=True
-    model_path='uvr5_weights/2_HP-UVR.pth'
+    model_path=args[2]
     pre_fun = _audio_pre_(model_path=model_path,device=device,is_half=True)
-    audio_path = 'audio.aac'
-    save_path = 'opt'
     pre_fun._path_audio_(audio_path , save_path,save_path)
