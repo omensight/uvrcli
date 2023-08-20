@@ -107,4 +107,4 @@ if __name__ == '__main__':
     is_half=True
     model_path=args[2]
     pre_fun = _audio_pre_(model_path=model_path,device=device,is_half=True)
-    pre_fun._path_audio_(audio_path , save_path,save_path)
+    pre_fun._path_audio_(audio_path , audio_path,save_path)
