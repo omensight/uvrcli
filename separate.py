@@ -103,7 +103,7 @@ if __name__ == '__main__':
     args = sys.argv
     audio_path = args[0]
     save_path = args[1]
-    device = 'cpu'
+    device = 'gpu'
     is_half=True
     model_path=args[2]
     pre_fun = _audio_pre_(model_path=model_path,device=device,is_half=True)
